@@ -14,7 +14,7 @@
       this.newarr = [];
       this.number = [];
     }
-  // Print no between 1 to 99 inclusive
+  // Print numbers between 1 to 99 inclusive
     oneToHundred(n) {
       const arr=[' one',' two',' three',' four',' five',' six',' seven',' eight',' nine',' ten',' eleven',' twelve',' thirteen',' fourteen',' fifteen',' sixteen',' seventeen',' eighteen',' nineteen',' twenty',' thirty',' fourty',' fifty',' sixty',' seventy',' eighty',' ninety'];
       let str = "";
@@ -124,15 +124,18 @@
       return str;
     }
     range(a, b) {
-      //Condition checks if numbers entered are between 1 and 999 inclusive and  if second no is greater than first no.
-      if (a > 0 && a < 10000 && b > 0 && b < 10000 && b > a) {
+      //Condition checks if numbers entered are between 1 and 999 inclusive.
+      if (!(a > 0 && a < 10000 && b > 0 && b < 10000)) {
+        alert(`Please enter both integers between 1 and 999 inclusive.`);
+        //Checks if second no is greater than first no.
+      }else if(a<b){
         for (let i = a; i <= b; i++) {
           const s = this.findRange(i);
           this.newarr.push(s);
           this.number.push(i);
-        }
-      } else {
-        alert(`Please enter both integers between 1 and 999 inclusive`);
+        } 
+      }else{
+        alert(`Second number must be greater than first number.`)
       }
     }
     //Function find length of Word
@@ -140,6 +143,8 @@
       return this.newarr[index].split("").filter(el => el === "e").length;
     }
   }
+
+ 
           /**
           |--------------------------------------------------
           |                     CONTROLER   
