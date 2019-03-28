@@ -11,16 +11,17 @@
   
   class Dictionary {
     constructor() {
-      this.newarr = [];
+      this.newArr = [];
       this.number = [];
     }
   // Print numbers between 1 to 99 inclusive
     oneToHundred(n) {
       const arr=[' one',' two',' three',' four',' five',' six',' seven',' eight',' nine',' ten',' eleven',' twelve',' thirteen',' fourteen',' fifteen',' sixteen',' seventeen',' eighteen',' nineteen',' twenty',' thirty',' fourty',' fifty',' sixty',' seventy',' eighty',' ninety'];
       let str = "";
-      while (n != 0) {
+      while (n !== 0) {
         if (n === 1) {
           str += arr[0];
+          //Making count zero to break out of the loop
           n = 0;
         } else if (n === 2) {
           str += arr[1];
@@ -107,16 +108,17 @@
   // Print numbers between 1 and 999
     findRange(m) {
       let str = "";
-      while (m != 0) {
+      while (m !== 0) {
         if (m >= 1 && m < 100) {
           str += this.oneToHundred(m);
+          //Making count zero to break out of the loop
           m = 0;
         } else if (m >= 100 && m < 1000) {
           str += this.oneToHundred(Math.floor(m / 100));
           str += ` hundred`;
           m = m % 100;
         }
-        //To increase the range to 9999
+        //To increase the range to 9999 (For applicaton Scalability)
         //  else if (m >= 1000 && m < 10000) {
         //   str += this.oneToHundred(Math.floor(m / 1000));
         //   str += ` thousand`;
@@ -133,7 +135,7 @@
       }else if(a<=b){
         for (let i = a; i <= b; i++) {
           const s = this.findRange(i);
-          this.newarr.push(s);
+          this.newArr.push(s);
           this.number.push(i);
         } 
       }else{
@@ -142,7 +144,7 @@
     }
     //Function find length of Word
     calculateLength(index) {
-      return this.newarr[index].split("").filter(el => el === "e").length;
+      return this.newArr[index].split("").filter(el => el === "e").length;
     }
   }
 
@@ -167,13 +169,13 @@
         const dic = new Dictionary()
         //Passed value to function
         dic.range(n1, n2);
-        const result = dic.newarr.map((el, i) => {
+       dic.newArr.map((el, i) => {
           /**
           |--------------------------------------------------
           |                     VIEW 
           |--------------------------------------------------
           */
-         //Insert the output into document
+         //Inserted  output into document
           const markup=`
           <li>(${dic.number[i]},${dic.calculateLength(i)})  ("${el}" has ${dic.calculateLength(i)===0?'no':`${dic.calculateLength(i)}`} ${dic.calculateLength(i)>=2?"'e's":'e'})</li>
           `
