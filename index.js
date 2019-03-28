@@ -168,7 +168,7 @@
           */
          //Insert the output into document
           const markup=`
-          <li>(${dic.number[i]},${dic.calculateLength(i)})  ("${el}" has ${dic.calculateLength(i)} 'e's)</li>
+          <li>(${dic.number[i]},${dic.calculateLength(i)})  ("${el}" has ${dic.calculateLength(i)===0?'no':`${dic.calculateLength(i)}`} ${dic.calculateLength(i)===2?"'e's":'e'})</li>
           `
           list.insertAdjacentHTML('beforeend',markup)
       });
