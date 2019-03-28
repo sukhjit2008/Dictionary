@@ -104,7 +104,7 @@
       }
       return str;
     }
-  // Print no between 1 and 999
+  // Print numbers between 1 and 999
     findRange(m) {
       let str = "";
       while (m != 0) {
@@ -115,20 +115,22 @@
           str += this.oneToHundred(Math.floor(m / 100));
           str += ` hundred`;
           m = m % 100;
-        } else if (m >= 1000 && m < 10000) {
-          str += this.oneToHundred(Math.floor(m / 1000));
-          str += ` thousand`;
-          m %= 1000;
         }
+        //To increase the range to 9999
+        //  else if (m >= 1000 && m < 10000) {
+        //   str += this.oneToHundred(Math.floor(m / 1000));
+        //   str += ` thousand`;
+        //   m %= 1000;
+        // }
       }
       return str;
     }
     range(a, b) {
       //Condition checks if numbers entered are between 1 and 999 inclusive.
-      if (!(a > 0 && a < 10000 && b > 0 && b < 10000)) {
+      if (!(a > 0 && a < 1000 && b > 0 && b < 1000)) {
         alert(`Please enter both integers between 1 and 999 inclusive.`);
         //Checks if second no is greater than first no.
-      }else if(a<b){
+      }else if(a<=b){
         for (let i = a; i <= b; i++) {
           const s = this.findRange(i);
           this.newarr.push(s);
@@ -173,7 +175,7 @@
           */
          //Insert the output into document
           const markup=`
-          <li>(${dic.number[i]},${dic.calculateLength(i)})  ("${el}" has ${dic.calculateLength(i)===0?'no':`${dic.calculateLength(i)}`} ${dic.calculateLength(i)===2?"'e's":'e'})</li>
+          <li>(${dic.number[i]},${dic.calculateLength(i)})  ("${el}" has ${dic.calculateLength(i)===0?'no':`${dic.calculateLength(i)}`} ${dic.calculateLength(i)>=2?"'e's":'e'})</li>
           `
           list.insertAdjacentHTML('beforeend',markup)
       });
