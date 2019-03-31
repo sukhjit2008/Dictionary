@@ -16,7 +16,7 @@
     }
   // Print numbers between 1 to 99 inclusive
     oneToHundred(n) {
-      const arr=[' one',' two',' three',' four',' five',' six',' seven',' eight',' nine',' ten',' eleven',' twelve',' thirteen',' fourteen',' fifteen',' sixteen',' seventeen',' eighteen',' nineteen',' twenty',' thirty',' fourty',' fifty',' sixty',' seventy',' eighty',' ninety'];
+      const arr=[' One',' Two',' Three',' Four',' Five',' Six',' Seven',' Eight',' Nine',' Ten',' Eleven',' Twelve',' Thirteen',' Fourteen',' Fifteen',' Sixteen',' Seventeen',' Eighteen',' Nineteen',' Twenty',' Thirty',' Forty',' Fifty',' Sixty',' Seventy',' Eighty',' Ninety'];
       let str = "";
       while (n !== 0) {
         for(let i=0;i<arr.length;i++){
@@ -46,13 +46,13 @@
           m = 0;
         } else if (m >= a && m < a*10) {
           str += this.oneToHundred(Math.floor(m / a));
-          str += ` hundred`;
+          str += ` Hundred`;
           m  %= a;
         }
         //To increase the range to 9999 (For applicaton Scalability)
         //  else if (m >= a*10 && m < a*100) {
         //   str += this.oneToHundred(Math.floor(m / a*10));
-        //   str += ` thousand`;
+        //   str += ` Thousand`;
         //   m %= a*10;
         // }
       }
