@@ -66,8 +66,8 @@
         //Checks if second no is greater than first no.
       }else if(a<=b){
         for (let i = a; i <= b; i++) {
-          const s = this.findRange(i);
-          this.newArr.push(s);
+          const word = this.findRange(i);
+          this.newArr.push(word);
           this.number.push(i);
         } 
       }else{
