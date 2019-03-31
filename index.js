@@ -19,110 +19,41 @@
       const arr=[' one',' two',' three',' four',' five',' six',' seven',' eight',' nine',' ten',' eleven',' twelve',' thirteen',' fourteen',' fifteen',' sixteen',' seventeen',' eighteen',' nineteen',' twenty',' thirty',' fourty',' fifty',' sixty',' seventy',' eighty',' ninety'];
       let str = "";
       while (n !== 0) {
-        if (n === 1) {
-          str += arr[0];
-          //Making count zero to break out of the loop
-          n = 0;
-        } else if (n === 2) {
-          str += arr[1];
-          n = 0;
-        } else if (n === 3) {
-          str += arr[2];
-          n = 0;
-        } else if (n === 4) {
-          str += arr[3];
-          n = 0;
-        } else if (n === 5) {
-          str += arr[4];
-          n = 0;
-        } else if (n === 6) {
-          str += arr[5];
-          n = 0;
-        } else if (n === 7) {
-          str += arr[6];
-          n = 0;
-        } else if (n === 8) {
-          str += arr[7];
-          n = 0;
-        } else if (n === 9) {
-          str += arr[8];
-          n = 0;
-        } else if (n === 10) {
-          str += arr[9];
-          n = 0;
-        } else if (n === 11) {
-          str += arr[10];
-          n = 0;
-        } else if (n === 12) {
-          str += arr[11];
-          n = 0;
-        } else if (n === 13) {
-          str += arr[12];
-          n = 0;
-        } else if (n === 14) {
-          str += arr[13];
-          n = 0;
-        } else if (n === 15) {
-          str += arr[14];
-          n = 0;
-        } else if (n === 16) {
-          str += arr[15];
-          n = 0;
-        } else if (n === 17) {
-          str += arr[16];
-          n = 0;
-        } else if (n === 18) {
-          str += arr[17];
-          n = 0;
-        } else if (n === 19) {
-          str += arr[18];
-          n = 0;
-        } else if (n >= 20 && n < 30) {
-          str += arr[19];
-          n -= 20;
-        } else if (n >= 30 && n < 40) {
-          str += arr[20];
-          n -= 30;
-        } else if (n >= 40 && n < 50) {
-          str += arr[21];
-          n -= 40;
-        } else if (n >= 50 && n < 60) {
-          str += arr[22];
-          n -= 50;
-        } else if (n >= 60 && n < 70) {
-          str += arr[23];
-          n -= 60;
-        } else if (n >= 70 && n < 80) {
-          str += arr[24];
-          n -= 70;
-        } else if (n >= 80 && n < 90) {
-          str += arr[25];
-          n -= 80;
-        } else if (n >= 90 && n < 100) {
-          str += arr[26];
-          n -= 90;
-        }
+        for(let i=0;i<arr.length;i++){
+          if(i===n){
+            str+=arr[n-1];
+            n=0;
+          }else if (n >= 20 && n < 100) {
+           let num = Math.floor(n/10)
+              if(i===num){
+                str +=arr[i+17];
+                n-=num*10;   
+              }
+        }  
       }
+    }
       return str;
     }
   // Print numbers between 1 and 999
     findRange(m) {
       let str = "";
+      //By increasing the value of a the limit can be increased.
+      const a=100;
       while (m !== 0) {
-        if (m >= 1 && m < 100) {
+        if (m >= 1 && m < a) {
           str += this.oneToHundred(m);
           //Making count zero to break out of the loop
           m = 0;
-        } else if (m >= 100 && m < 1000) {
-          str += this.oneToHundred(Math.floor(m / 100));
+        } else if (m >= a && m < a*10) {
+          str += this.oneToHundred(Math.floor(m / a));
           str += ` hundred`;
-          m = m % 100;
+          m  %= a;
         }
         //To increase the range to 9999 (For applicaton Scalability)
-        //  else if (m >= 1000 && m < 10000) {
-        //   str += this.oneToHundred(Math.floor(m / 1000));
+        //  else if (m >= a*10 && m < a*100) {
+        //   str += this.oneToHundred(Math.floor(m / a*10));
         //   str += ` thousand`;
-        //   m %= 1000;
+        //   m %= a*10;
         // }
       }
       return str;
@@ -169,12 +100,12 @@
         const dic = new Dictionary()
         //Passed value to function
         dic.range(n1, n2);
-       dic.newArr.map((el, i) => {
-          /**
+         /**
           |--------------------------------------------------
           |                     VIEW 
           |--------------------------------------------------
           */
+       dic.newArr.map((el, i) => {
          //Inserted  output into document
           const markup=`
           <li>(${dic.number[i]},${dic.calculateLength(i)})  ("${el}" has ${dic.calculateLength(i)===0?'no':`${dic.calculateLength(i)}`} ${dic.calculateLength(i)>=2?"'e's":'e'})</li>
