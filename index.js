@@ -60,7 +60,8 @@
     }
     range(a, b) {
       //Condition checks if numbers entered are between 1 and 999 inclusive.
-      if (!(a > 0 && a < 1000 && b > 0 && b < 1000)) {
+      const maxLimit=1000;
+      if (!(a > 0 && a < maxLimit && b > 0 && b < maxLimit)) {
         alert(`Please enter both integers between 1 and 999 inclusive.`);
         //Checks if second no is greater than first no.
       }else if(a<=b){
